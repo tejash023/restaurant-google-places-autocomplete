@@ -39,6 +39,11 @@ const RestaurantCard = ({
             </p>
           )}
         </div>
+        <p className="restaurant-area">{locality}</p>
+        <div className="restaurant-info">
+          <p> {sla.deliveryTime} mins</p>
+          <p> {costForTwo}</p>
+        </div>
       </div>
     </div>
   );

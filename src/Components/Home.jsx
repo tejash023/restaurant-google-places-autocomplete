@@ -6,11 +6,14 @@ const Home = () => {
   const [restaurantList, setRestaurantList] = useState("");
   const [filteredRestaurant, setFilteredRestaurants] = useState("");
 
+  let latitude = 12.9715987;
+  let longitude = 77.5945627;
+
   useEffect(() => {
     async function fetchRestaurants() {
       try {
         const response = await fetch(
-          "https://gofoodsserver.onrender.com/api/restaurants/?lat=12.9715987&lng=77.5945627"
+          `https://gofoodsserver.onrender.com/api/restaurants/?lat=${latitude}&lng=${longitude}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
