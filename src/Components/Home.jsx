@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
-import RestaurantCards from "./RestaurantCards";
+import RestaurantLists from "./RestaurantLists";
 
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState("");
@@ -49,7 +49,7 @@ const Home = () => {
       {!restaurantList ? (
         <p>Loading data....</p>
       ) : (
-        <RestaurantCards restaurantList={restaurantList} />
+        <RestaurantLists restaurantList={restaurantList} />
       )}
     </div>
   );
