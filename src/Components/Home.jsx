@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
+import RestaurantCards from "./RestaurantCards";
 
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState("");
@@ -15,7 +17,7 @@ const Home = () => {
         }
         const json = await response.json();
         const restaurantData = await extractRestaurantData(json);
-        updateStateWithData(json, restaurantData);
+        updateStateWithData(restaurantData);
       } catch (error) {
         console.error("Error fetching or processing data:", error);
       }
@@ -33,7 +35,7 @@ const Home = () => {
       return [];
     }
 
-    function updateStateWithData(json, restaurantData) {
+    function updateStateWithData(restaurantData) {
       setRestaurantList(restaurantData);
       setFilteredRestaurants(restaurantData);
     }
@@ -41,11 +43,14 @@ const Home = () => {
     fetchRestaurants();
   }, []);
 
-  console.log(restaurantList);
-
   return (
-    <div className="h-">
-      <h1 className="bg-red">Go Foods</h1>
+    <div className="container">
+      <Header />
+      {!restaurantList ? (
+        <p>Loading data....</p>
+      ) : (
+        <RestaurantCards restaurantList={restaurantList} />
+      )}
     </div>
   );
 };
