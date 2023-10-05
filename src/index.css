@@ -121,6 +121,10 @@
   background-color: #e68c47;
 }
 
+.fa-chevron-down {
+  margin-right: 5px;
+}
+
 /* <div class="pac-container pac-logo" style="width: 557px; position: absolute; left: 66px; top: 106px; display: none;">
     <div class="pac-item">
         <span class="pac-icon pac-icon-marker"></span>
