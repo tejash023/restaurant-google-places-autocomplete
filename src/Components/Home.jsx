@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
+import Loader from "./Loader";
 import RestaurantLists from "./RestaurantLists";
 
 const Home = () => {
@@ -50,7 +51,7 @@ const Home = () => {
     <div className="container">
       <Header />
       {!restaurantList ? (
-        <p>Loading data....</p>
+        <Loader />
       ) : (
         <RestaurantLists restaurantList={restaurantList} />
       )}
