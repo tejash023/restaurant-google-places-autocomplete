@@ -7,12 +7,10 @@ import RestaurantLists from "./RestaurantLists";
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState("");
   const [filteredRestaurant, setFilteredRestaurants] = useState("");
-
-  //default location set to Bangalore
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
 
-  //get current user location and fetching the res based on the user's current location
+  //get current user location and fetching the restaurant lists based on the user's current location
   const getCurrentUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -35,6 +33,7 @@ const Home = () => {
     setRestaurantList(""); // to show the loader ui, while user is changing the location
   };
 
+  //call api - fetching restaurant lists based on the user lat/lng updates
   useEffect(() => {
     async function fetchRestaurants() {
       try {
@@ -52,6 +51,7 @@ const Home = () => {
       }
     }
 
+    //to extract restaurants data
     async function extractRestaurantData(jsonData) {
       const cards = jsonData?.data?.cards || [];
       if (cards[0]?.card?.card?.id === "swiggy_not_present")
@@ -67,6 +67,7 @@ const Home = () => {
       return [];
     }
 
+    //updating state variables
     function updateStateWithData(restaurantData) {
       setRestaurantList(restaurantData);
       setFilteredRestaurants(restaurantData);
