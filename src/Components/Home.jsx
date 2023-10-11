@@ -7,15 +7,32 @@ import RestaurantLists from "./RestaurantLists";
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState("");
   const [filteredRestaurant, setFilteredRestaurants] = useState("");
-  const [lat, setLat] = useState(12.9715987);
-  const [lng, setLng] = useState(77.5945627);
 
-  console.log(restaurantList);
+  //default location set to Bangalore
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
 
+  //get current user location and fetching the res based on the user's current location
+  const getCurrentUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLat(position.coords.latitude);
+        setLng(position.coords.longitude);
+      });
+    } else {
+      console.log("Geolocation is not supported by your browser.");
+    }
+  };
+
+  useEffect(() => {
+    getCurrentUserLocation();
+  }, []);
+
+  //callback funtion - to update the location
   const onLatLngChanged = (location) => {
     setLat(location.lat);
     setLng(location.lng);
-    setRestaurantList("");
+    setRestaurantList(""); // to show the loader ui, while user is changing the location
   };
 
   useEffect(() => {
