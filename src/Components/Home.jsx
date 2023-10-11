@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import Loader from "./Loader";
+import NotAvailable from "./NotAvailable";
 import RestaurantLists from "./RestaurantLists";
 
 const Home = () => {
@@ -9,8 +10,9 @@ const Home = () => {
   const [lat, setLat] = useState(12.9715987);
   const [lng, setLng] = useState(77.5945627);
 
+  console.log(restaurantList);
+
   const onLatLngChanged = (location) => {
-    console.log(location);
     setLat(location.lat);
     setLng(location.lng);
   };
@@ -27,7 +29,6 @@ const Home = () => {
         const json = await response.json();
         const restaurantData = await extractRestaurantData(json);
         updateStateWithData(restaurantData);
-        console.log(restaurantData);
       } catch (error) {
         console.error("Error fetching or processing data:", error);
       }
@@ -35,6 +36,9 @@ const Home = () => {
 
     async function extractRestaurantData(jsonData) {
       const cards = jsonData?.data?.cards || [];
+      if (cards[0]?.card?.card?.id === "swiggy_not_present")
+        return "NOT SERVICABLE";
+
       for (const card of cards) {
         const restaurants =
           card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -58,8 +62,10 @@ const Home = () => {
       <Header onLatLngChanged={onLatLngChanged} />
       {!restaurantList ? (
         <Loader />
-      ) : (
+      ) : restaurantList !== "NOT SERVICABLE" ? (
         <RestaurantLists restaurantList={restaurantList} />
+      ) : (
+        <NotAvailable />
       )}
     </div>
   );
