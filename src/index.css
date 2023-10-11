@@ -200,3 +200,8 @@
 .service-notavailable img {
   width: 250px;
 }
+
+.current-city {
+  color: #e68c47;
+  font-weight: 500;
+}

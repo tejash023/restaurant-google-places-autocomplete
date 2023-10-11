@@ -3,10 +3,16 @@ import Autocomplete from "react-google-autocomplete";
 
 const Header = ({ onLatLngChanged }) => {
   const [showCityInput, setShowCityInput] = useState(false);
+  const [currentCity, setCurrentCity] = useState("");
+
+  const toggleShowCityInput = () => {
+    setShowCityInput(!showCityInput); // Toggle the state value
+  };
+
   return (
     <div className="header">
-      <p onClick={() => setShowCityInput(true)}>
-        Select your city&nbsp;
+      <p onClick={toggleShowCityInput}>
+        Delivering at&nbsp;
         <span>
           <i className="fa fa-chevron-down"></i>
         </span>
@@ -21,8 +27,11 @@ const Header = ({ onLatLngChanged }) => {
             };
             onLatLngChanged(location);
           }}
+          onBlur={(e) => setCurrentCity(e.target.value)}
         />
       )}
+
+      {currentCity && <p className="current-city">{currentCity}</p>}
     </div>
   );
 };
