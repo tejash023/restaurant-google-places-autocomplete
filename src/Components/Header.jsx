@@ -2,8 +2,6 @@ import { useState } from "react";
 import Autocomplete from "react-google-autocomplete";
 
 const Header = ({ onLatLngChanged }) => {
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
   const [showCityInput, setShowCityInput] = useState(false);
   return (
     <div className="header">

@@ -15,6 +15,7 @@ const Home = () => {
   const onLatLngChanged = (location) => {
     setLat(location.lat);
     setLng(location.lng);
+    setRestaurantList("");
   };
 
   useEffect(() => {
