@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Autocomplete from "react-google-autocomplete";
 
-const Header = () => {
+const Header = ({ onLatLngChanged }) => {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
   const [showCityInput, setShowCityInput] = useState(false);
@@ -10,7 +10,7 @@ const Header = () => {
       <p onClick={() => setShowCityInput(true)}>
         Select your city&nbsp;
         <span>
-          <i class="fa fa-chevron-down"></i>
+          <i className="fa fa-chevron-down"></i>
         </span>
       </p>
       {showCityInput && (
@@ -20,8 +20,13 @@ const Header = () => {
             console.log(place);
             console.log(place.geometry.location.lat());
             console.log(place.geometry.location.lng());
-            setLat(place.geometry.location.lat());
-            setLng(place.geometry.location.lng());
+            // setLat(place.geometry.location.lat());
+            // setLng(place.geometry.location.lng());
+            let location = {
+              lat: place.geometry.location.lat(),
+              lng: place.geometry.location.lng(),
+            };
+            onLatLngChanged(location);
           }}
         />
       )}
