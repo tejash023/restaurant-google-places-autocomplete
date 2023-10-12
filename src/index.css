@@ -45,6 +45,7 @@
 }
 
 .restaurant {
+  position: relative;
   width: 330px;
   height: auto;
   padding: 10px;
@@ -203,5 +204,14 @@
 
 .current-city {
   color: #e68c47;
+  font-weight: 500;
+}
+
+.restaurant-offer {
+  position: absolute;
+  bottom: 40%;
+  background: #4caf50;
+  color: white;
+  padding: 4px 8px;
   font-weight: 500;
 }

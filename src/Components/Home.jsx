@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+
+//COMPONENTS
 import Header from "./Header";
 import Loader from "./Loader";
 import NotAvailable from "./NotAvailable";
@@ -33,7 +35,7 @@ const Home = () => {
     setRestaurantList(""); // to show the loader ui, while user is changing the location
   };
 
-  //call api - fetching restaurant lists based on the user lat/lng updates
+  //API CALL - fetching restaurant lists based on the user lat/lng updates
   useEffect(() => {
     async function fetchRestaurants() {
       try {
@@ -51,12 +53,15 @@ const Home = () => {
       }
     }
 
-    //to extract restaurants data
+    //TO EXTACT RESTAURANTS DATA
     async function extractRestaurantData(jsonData) {
       const cards = jsonData?.data?.cards || [];
+
+      //TO HANDLE NON SERVICABLE AREAS
       if (cards[0]?.card?.card?.id === "swiggy_not_present")
         return "NOT SERVICABLE";
 
+      //TO EXTRACT RESTAURANTS AND RETURN THE LIST
       for (const card of cards) {
         const restaurants =
           card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -73,6 +78,7 @@ const Home = () => {
       setFilteredRestaurants(restaurantData);
     }
 
+    //FUNCTION CALL - TO FETCH RESTAURANTS
     fetchRestaurants();
   }, [lat, lng]);
 

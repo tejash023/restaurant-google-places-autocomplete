@@ -1,5 +1,3 @@
-import React from "react";
-
 const RestaurantCard = ({
   id,
   name,
@@ -14,20 +12,22 @@ const RestaurantCard = ({
   const IMG_CDN_URL =
     "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-  let ratingType;
-  if (avgRating >= 4.0) {
-    ratingType = "green";
-  } else if (avgRating < 4.0 && avgRating > 3.0) {
-    ratingType = "yellow";
-  } else {
-    ratingType = "red";
-  }
+  //DECIDE RATINGS BACKGROUND BASED ON THE USER RATINGS VALUE
+  const ratingType =
+    avgRating >= 4.0 ? "green" : avgRating > 3.0 ? "yellow" : "red";
 
   return (
     <div className="restaurant" key={name}>
       <div className="restaurant-image">
         <img src={IMG_CDN_URL + cloudinaryImageId} alt="restaurant-img" />
       </div>
+      {aggregatedDiscountInfoV3 && (
+        <div className="restaurant-offer">
+          {aggregatedDiscountInfoV3.header +
+            " " +
+            aggregatedDiscountInfoV3.subHeader}
+        </div>
+      )}
       <div className="restaurant-details">
         <p className="restaurant-name">{name}</p>
         <div className="restaurant-details-info">
