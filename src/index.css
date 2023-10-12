@@ -134,15 +134,6 @@
   margin-right: 5px;
 }
 
-/* <div class="pac-container pac-logo" style="width: 557px; position: absolute; left: 66px; top: 106px; display: none;">
-    <div class="pac-item">
-        <span class="pac-icon pac-icon-marker"></span>
-        <span class="pac-item-query">
-            <span>France</span>
-        </span>
-    </div>
-<div> */
-
 .pac-container {
   padding: 5px;
   border-radius: 5px;
