@@ -3,7 +3,7 @@ import Autocomplete from "react-google-autocomplete";
 
 const Header = ({ onLatLngChanged }) => {
   const [showCityInput, setShowCityInput] = useState(false);
-  const [currentCity, setCurrentCity] = useState("");
+  const [currentCity, setCurrentCity] = useState("Bangalore, Karnataka, India");
 
   const toggleShowCityInput = () => {
     setShowCityInput(!showCityInput); // Toggle the state value
