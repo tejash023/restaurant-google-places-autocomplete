@@ -34,6 +34,7 @@
   padding: 8px 10px;
   width: 250px;
   border-radius: 10px;
+  margin-left: 10px;
 }
 .restaurant-lists {
   display: flex;
@@ -131,7 +132,7 @@
 }
 
 .fa-chevron-down {
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .pac-container {
@@ -205,4 +206,14 @@
   color: white;
   padding: 4px 8px;
   font-weight: 500;
+}
+
+.fa-map-pin {
+  font-size: 20px;
+  color: #e68c47;
+}
+
+.fa-map-pin:hover {
+  color: midnightblue;
+  cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Autocomplete from "react-google-autocomplete";
 
 const Header = ({ onLatLngChanged }) => {
@@ -9,13 +9,13 @@ const Header = ({ onLatLngChanged }) => {
     setShowCityInput(!showCityInput); // Toggle the state value
   };
 
+  console.log(showCityInput);
+  console.log(currentCity);
+
   return (
     <div className="header">
-      <p onClick={toggleShowCityInput}>
-        Delivering at&nbsp;
-        <span>
-          <i className="fa fa-chevron-down"></i>
-        </span>
+      <p onClick={toggleShowCityInput} className="location">
+        <i class="fa fa-map-pin"></i>&nbsp;
       </p>
       {showCityInput && (
         <Autocomplete
@@ -27,11 +27,22 @@ const Header = ({ onLatLngChanged }) => {
             };
             onLatLngChanged(location);
           }}
-          onBlur={(e) => setCurrentCity(e.target.value)}
+          onBlur={(e) => {
+            setCurrentCity(e.target.value);
+            setTimeout(() => {
+              setShowCityInput(false);
+              console.log("wow");
+            }, 100);
+          }}
         />
       )}
 
-      {currentCity && <p className="current-city">{currentCity}</p>}
+      {currentCity && !showCityInput && (
+        <p className="current-city">
+          {currentCity}
+          <i className="fa fa-chevron-down"></i>
+        </p>
+      )}
     </div>
   );
 };
