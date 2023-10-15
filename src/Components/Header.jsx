@@ -9,9 +9,6 @@ const Header = ({ onLatLngChanged }) => {
     setShowCityInput(!showCityInput); // Toggle the state value
   };
 
-  console.log(showCityInput);
-  console.log(currentCity);
-
   return (
     <div className="header">
       <p onClick={toggleShowCityInput} className="location">
