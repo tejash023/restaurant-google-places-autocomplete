@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Footer from "./Footer";
 
 //COMPONENTS
 import Header from "./Header";
@@ -92,6 +93,7 @@ const Home = () => {
       ) : (
         <NotAvailable />
       )}
+      <Footer />
     </div>
   );
 };

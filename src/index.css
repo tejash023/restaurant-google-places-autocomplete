@@ -7,7 +7,7 @@
 }
 
 .container {
-  margin-top: 100px;
+  margin: 100px 0 0 0;
 }
 .header {
   box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
@@ -188,6 +188,8 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  min-height: 70vh;
+  margin: auto 6%;
 }
 
 .service-notavailable img {
@@ -217,4 +219,25 @@
 .fa-location-arrow:hover {
   color: midnightblue;
   cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(2, 6, 12);
+  color: #a8a3a3;
+  padding: 20px 6%;
+  margin-top: 10px;
+}
+
+.footer p {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 600px) {
+  .service-notavailable p {
+    padding: 0 25px;
+  }
 }
