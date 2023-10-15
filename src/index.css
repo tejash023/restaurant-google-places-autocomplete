@@ -197,6 +197,7 @@
 .current-city {
   color: #e68c47;
   font-weight: 500;
+  margin-left: 7px;
 }
 
 .restaurant-offer {
@@ -208,12 +209,12 @@
   font-weight: 500;
 }
 
-.fa-map-pin {
-  font-size: 20px;
+.fa-location-arrow {
+  font-size: 25px;
   color: #e68c47;
 }
 
-.fa-map-pin:hover {
+.fa-location-arrow:hover {
   color: midnightblue;
   cursor: pointer;
 }

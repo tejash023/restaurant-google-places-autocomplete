@@ -15,7 +15,7 @@ const Header = ({ onLatLngChanged }) => {
   return (
     <div className="header">
       <p onClick={toggleShowCityInput} className="location">
-        <i class="fa fa-map-pin"></i>&nbsp;
+        <i class="fa fa-location-arrow"></i>&nbsp;
       </p>
       {showCityInput && (
         <Autocomplete
